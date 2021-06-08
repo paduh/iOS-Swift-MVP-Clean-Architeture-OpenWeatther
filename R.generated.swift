@@ -139,7 +139,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 3 images.
+  /// This `R.image` struct is generated, and contains static references to 6 images.
   struct image {
     /// Image `clear`.
     static let clear = Rswift.ImageResource(bundle: R.hostingBundle, name: "clear")
@@ -147,6 +147,12 @@ struct R: Rswift.Validatable {
     static let partlysunny = Rswift.ImageResource(bundle: R.hostingBundle, name: "partlysunny")
     /// Image `rain`.
     static let rain = Rswift.ImageResource(bundle: R.hostingBundle, name: "rain")
+    /// Image `sea_cloudy`.
+    static let sea_cloudy = Rswift.ImageResource(bundle: R.hostingBundle, name: "sea_cloudy")
+    /// Image `sea_rainy`.
+    static let sea_rainy = Rswift.ImageResource(bundle: R.hostingBundle, name: "sea_rainy")
+    /// Image `sea_sunnypng`.
+    static let sea_sunnypng = Rswift.ImageResource(bundle: R.hostingBundle, name: "sea_sunnypng")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "clear", bundle: ..., traitCollection: ...)`
@@ -166,6 +172,27 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "rain", bundle: ..., traitCollection: ...)`
     static func rain(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.rain, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sea_cloudy", bundle: ..., traitCollection: ...)`
+    static func sea_cloudy(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sea_cloudy, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sea_rainy", bundle: ..., traitCollection: ...)`
+    static func sea_rainy(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sea_rainy, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "sea_sunnypng", bundle: ..., traitCollection: ...)`
+    static func sea_sunnypng(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sea_sunnypng, compatibleWith: traitCollection)
     }
     #endif
 
@@ -203,12 +230,34 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
+  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
+  struct nib {
+    /// Nib `WeatherCell`.
+    static let weatherCell = _R.nib._WeatherCell()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "WeatherCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.weatherCell) instead")
+    static func weatherCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.weatherCell)
+    }
+    #endif
+
+    static func weatherCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WeatherCell? {
+      return R.nib.weatherCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WeatherCell
+    }
+
+    fileprivate init() {}
+  }
+
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.text` struct is generated, and contains static references to 1 localization keys.
+    /// This `R.string.text` struct is generated, and contains static references to 2 localization keys.
     struct text {
       /// Value: DVT
       static let dvT = Rswift.StringResource(key: "DVT", tableName: "Text", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Ok
+      static let ok = Rswift.StringResource(key: "ok", tableName: "Text", bundle: R.hostingBundle, locales: [], comment: nil)
 
       /// Value: DVT
       static func dvT(preferredLanguages: [String]? = nil) -> String {
@@ -221,6 +270,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("DVT", tableName: "Text", bundle: bundle, comment: "")
+      }
+
+      /// Value: Ok
+      static func ok(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ok", tableName: "Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Text", preferredLanguages: preferredLanguages) else {
+          return "ok"
+        }
+
+        return NSLocalizedString("ok", tableName: "Text", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}
@@ -248,6 +310,23 @@ struct _R: Rswift.Validatable {
     try storyboard.validate()
     #endif
   }
+
+  #if os(iOS) || os(tvOS)
+  struct nib {
+    struct _WeatherCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "WeatherCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> WeatherCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? WeatherCell
+      }
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+  #endif
 
   #if os(iOS) || os(tvOS)
   struct storyboard: Rswift.Validatable {
@@ -278,7 +357,7 @@ struct _R: Rswift.Validatable {
 
     #if os(iOS) || os(tvOS)
     struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = ViewController
+      typealias InitialController = WeatherController
 
       let bundle = R.hostingBundle
       let name = "Main"
