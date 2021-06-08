@@ -8,3 +8,10 @@
 
 "DVT" = "DVT";
 "ok" = "Ok";
+
+"clear" = "Clear";
+"rain" = "Rainy";
+"clouds" = "Cloudy";
+"min" = "min";
+"max" = "max";
+"current" = "Current";

@@ -16,25 +16,25 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="0wY-I7-8H3">
-                        <rect key="frame" x="16" y="7" width="288" height="30"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="0wY-I7-8H3">
+                        <rect key="frame" x="12" y="12" width="296" height="20"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGc-Zn-mbH">
-                                <rect key="frame" x="0.0" y="0.0" width="37.5" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <rect key="frame" x="0.0" y="2" width="33" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D0L-k1-Mcf">
-                                <rect key="frame" x="129" y="0.0" width="30" height="30"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D0L-k1-Mcf">
+                                <rect key="frame" x="138" y="0.0" width="20" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="cDQ-Ta-eWG"/>
-                                    <constraint firstAttribute="height" constant="30" id="eBx-g7-hHy"/>
+                                    <constraint firstAttribute="width" constant="20" id="cDQ-Ta-eWG"/>
+                                    <constraint firstAttribute="height" constant="20" id="eBx-g7-hHy"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TR1-je-hQc">
-                                <rect key="frame" x="250.5" y="0.0" width="37.5" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <rect key="frame" x="263" y="2" width="33" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -43,15 +43,15 @@
                 </subviews>
                 <color key="backgroundColor" red="0.36023163800000002" green="0.55678027870000002" blue="0.86277967690000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <constraints>
-                    <constraint firstItem="0wY-I7-8H3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="9CS-Km-9Xg"/>
-                    <constraint firstAttribute="trailing" secondItem="0wY-I7-8H3" secondAttribute="trailing" constant="16" id="Qxh-Rq-BXh"/>
-                    <constraint firstItem="0wY-I7-8H3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tMp-8S-AJf"/>
+                    <constraint firstItem="0wY-I7-8H3" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="4yA-cw-2eo"/>
+                    <constraint firstItem="0wY-I7-8H3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-4" id="CWe-nb-Twh"/>
+                    <constraint firstItem="0wY-I7-8H3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NCa-dt-xvC"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="dayNameLabel" destination="sGc-Zn-mbH" id="a3P-BC-ljz"/>
-                <outlet property="degreeLabel" destination="TR1-je-hQc" id="WXJ-IH-sow"/>
+                <outlet property="forcastDateLabel" destination="sGc-Zn-mbH" id="B7Z-tt-1wc"/>
+                <outlet property="temperatureLabel" destination="TR1-je-hQc" id="Mvs-iP-Mi6"/>
                 <outlet property="weatherIconImageView" destination="D0L-k1-Mcf" id="TdN-ha-Uns"/>
             </connections>
             <point key="canvasLocation" x="113" y="123"/>

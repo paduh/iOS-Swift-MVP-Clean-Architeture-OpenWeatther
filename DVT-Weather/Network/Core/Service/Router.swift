@@ -21,6 +21,7 @@ class Router<EndPoint: EndPointType, T: Codable>: NSObject, NetworkRouter, URLSe
         let session = URLSession(configuration: sessionConfig, delegate: self, delegateQueue: nil)
         do {
             let request = try self.buildRequest(from: route)
+            print(request.url)
             task = session.dataTask(with: request, completionHandler: { (data, response, error) in
                 
                 if error != nil {

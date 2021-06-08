@@ -15,8 +15,8 @@ typealias CurrentWeatherCompletion<T: Codable> = ((Result<T?>)->())
 
 protocol CurrentWeatherCompletionServiceDelegate {
     associatedtype T: Codable
-    func currentWeather(completion: @escaping CurrentWeatherCompletion<T>)
-    func fiveDayWeatherForcast(completion: @escaping CurrentWeatherCompletion<T>)
+    func currentWeather(lat: Double, long: Double, completion: @escaping CurrentWeatherCompletion<T>)
+    func fiveDayWeatherForcast(lat: Double, long: Double, completion: @escaping CurrentWeatherCompletion<T>)
 }
 
 // MARK:- Payment Methods Service
@@ -38,11 +38,11 @@ class WeatherService<T: Codable> {
 
 extension WeatherService: CurrentWeatherCompletionServiceDelegate {
     
-    func currentWeather(completion: @escaping CurrentWeatherCompletion<T>) {
-        router.request(route: .currentWeather, logContent: true, completion: completion)
+    func currentWeather(lat: Double, long: Double, completion: @escaping CurrentWeatherCompletion<T>) {
+        router.request(route: .currentWeather(lat, long), logContent: true, completion: completion)
     }
     
-    func fiveDayWeatherForcast(completion: @escaping CurrentWeatherCompletion<T>) {
-        router.request(route: .fiveDaysForcast, logContent: true, completion: completion)
+    func fiveDayWeatherForcast(lat: Double, long: Double, completion: @escaping CurrentWeatherCompletion<T>) {
+        router.request(route: .fiveDaysForcast(lat, long), logContent: true, completion: completion)
     }
 }

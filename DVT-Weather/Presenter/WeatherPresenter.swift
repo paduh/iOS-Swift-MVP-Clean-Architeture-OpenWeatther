@@ -13,19 +13,32 @@ final class WeatherPresenter {
     
     // MARK: Properties
 
-    private let currentweatherService: WeatherService<CurrentWeather>!
-    private let fiveDaysweatherService: WeatherService<FiveDaysWeather>!
+    private let currentWeatherService: WeatherService<CurrentWeather>!
+    private let fiveDaysWeatherService: WeatherService<FiveDaysWeather>!
     private var dispatchGroup: DispatchGroup!
     weak var weatherView: WeatherView?
+    var currentWeather: CurrentWeather? {
+        didSet {
+            let weatherInfo = WeatherInfo(
+                backgroundImageName: backgroundImageName,
+                temperature: temperature,
+                minTemperature: minTemperature,
+                maxTemperature: maxTemperature
+            )
+            self.weatherInfoCompletion?(weatherInfo)
+        }
+    }
+    var weatherInfoCompletion: ((WeatherInfo) -> Void)?
+    var weatherType: String = ""
     
     // MARK: - Initializer / DeInitializer
     
     init(
-        currentweatherService: WeatherService<CurrentWeather> = WeatherService<CurrentWeather>(),
-        fiveDaysweatherService: WeatherService<FiveDaysWeather> = WeatherService<FiveDaysWeather>()
+        currentWeatherService: WeatherService<CurrentWeather> = WeatherService<CurrentWeather>(),
+        fiveDaysWeatherService: WeatherService<FiveDaysWeather> = WeatherService<FiveDaysWeather>()
     ) {
-        self.currentweatherService = currentweatherService
-        self.fiveDaysweatherService = fiveDaysweatherService
+        self.currentWeatherService = currentWeatherService
+        self.fiveDaysWeatherService = fiveDaysWeatherService
     }
     
     func viewDidLoad() {
@@ -46,15 +59,46 @@ final class WeatherPresenter {
     }
 }
 
+// MARK: - Helpers
+
+extension WeatherPresenter {
+    
+    var minTemperature: String {
+        guard let temp = currentWeather?.main?.tempMin?.celciusTemp else { return "" }
+        return temp + "\n\(R.string.text.min())"
+    }
+    
+    var maxTemperature: String {
+        guard let temp = currentWeather?.main?.tempMax?.celciusTemp else { return "" }
+        return temp + "\n\(R.string.text.max())"
+    }
+    
+    var temperature: String {
+        guard let temp = currentWeather?.main?.temp?.celciusTemp else { return "" }
+        return  temp + "\n\(weatherType)"
+    }
+    
+    var backgroundImageName: String {
+        guard let main = currentWeather?.weather?.first?.main else { return "" }
+        guard let weatherType = WeatherType(rawValue: main) else { return "" }
+        self.weatherType = weatherType.title
+        switch weatherType {
+        case .clear: return R.image.sea_sunnypng.name
+        case .clouds: return R.image.sea_cloudy.name
+        case .rain: return R.image.sea_rainy.name
+        }
+    }
+}
+
 // MARK: - API
 
 extension WeatherPresenter {
     
     // MARK: - Current Weather
     
-    func fetchCurrentWeather() {
+    func fetchCurrentWeather(lat: Double, long: Double) {
         dispatchGroup.enter()
-        currentweatherService.currentWeather { [ weak self] (result) in
+        currentWeatherService.currentWeather(lat: lat, long: long) { [ weak self] (result) in
             guard let self = self else { return }
             self.dispatchGroup.leave()
             switch result {
@@ -65,6 +109,8 @@ extension WeatherPresenter {
                     self.weatherView?.showEmptyState()
                     return
                 }
+                
+                self.currentWeather = currentWeather
                 self.weatherView?.show(currentWeather: currentWeather)
             }
         }
@@ -72,9 +118,9 @@ extension WeatherPresenter {
     
     // MARK: - Five Days Weather Forcast
     
-    func fetchFiveDaysWeather() {
+    func fetchFiveDaysWeather(lat: Double, long: Double) {
         dispatchGroup.enter()
-        fiveDaysweatherService.fiveDayWeatherForcast { [ weak self] (result) in
+        fiveDaysWeatherService.fiveDayWeatherForcast(lat: lat, long: long) { [ weak self] (result) in
             guard let self = self else { return }
             self.dispatchGroup.leave()
             switch result {

@@ -15,7 +15,6 @@ public struct CurrentWeather: Codable {
     public let main: Main?
     public let visibility: Int?
     public let wind: Wind?
-    public let clouds: Clouds?
     public let dt: Int?
     public let sys: Sys?
     public let timezone: Int?
@@ -30,7 +29,6 @@ public struct CurrentWeather: Codable {
         main: Main?,
         visibility: Int?,
         wind: Wind?,
-        clouds: Clouds?,
         dt: Int?,
         sys: Sys?,
         timezone: Int?,
@@ -44,7 +42,6 @@ public struct CurrentWeather: Codable {
         self.main = main
         self.visibility = visibility
         self.wind = wind
-        self.clouds = clouds
         self.dt = dt
         self.sys = sys
         self.timezone = timezone
@@ -103,7 +100,7 @@ public struct Sys: Codable {
 // MARK: - Weather
 public struct Weather: Codable {
     public let id: Int?
-    public let main: String?
+    public var main: String?
     public let description: String?
     public let icon: String?
 

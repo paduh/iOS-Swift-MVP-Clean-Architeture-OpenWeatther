@@ -186,3 +186,20 @@ public struct Wind: Codable {
         self.gust = gust
     }
 }
+
+public enum WeatherType: String, Codable {
+    case rain = "Rain"
+    case clear = "Clear"
+    case clouds = "Clouds"
+    
+    var title: String {
+        switch self {
+        case .clear: return R.string.text.clear()
+        case .rain: return R.string.text.rain()
+        case .clouds: return R.string.text.clouds()
+        }
+    }
+}
+
+
+// Rain, Clear, Clouds

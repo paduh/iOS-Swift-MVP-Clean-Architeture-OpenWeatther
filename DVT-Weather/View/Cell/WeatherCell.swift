@@ -10,7 +10,7 @@ import UIKit
 // MARK: - WeatherCellPreentable
 
 protocol WeatherCellPreentable {
-    func configureCell()
+    func configureCell(item: WeatherItem)
 }
 
 // MARK: - WeatherCell
@@ -19,8 +19,8 @@ final class WeatherCell: UITableViewCell {
     
     // MARK: - IBOutlets
 
-    @IBOutlet weak private var dayNameLabel: UILabel!
-    @IBOutlet weak private var degreeLabel: UILabel!
+    @IBOutlet weak private var forcastDateLabel: UILabel!
+    @IBOutlet weak private var temperatureLabel: UILabel!
     @IBOutlet weak private var weatherIconImageView: UIImageView!
     
     // MARK: - Life Cycle Methods
@@ -35,7 +35,9 @@ final class WeatherCell: UITableViewCell {
 // MARK: - WeatherCellPreentable
 
 extension WeatherCell: WeatherCellPreentable {
-    func configureCell() {
-        
+    func configureCell(item: WeatherItem) {
+        forcastDateLabel.text = item.forcastDate
+        temperatureLabel.text = item.temperature
+        weatherIconImageView.image = item.weatherImage
     }
 }

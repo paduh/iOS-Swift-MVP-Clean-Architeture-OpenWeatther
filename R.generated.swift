@@ -252,12 +252,63 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.text` struct is generated, and contains static references to 2 localization keys.
+    /// This `R.string.text` struct is generated, and contains static references to 8 localization keys.
     struct text {
+      /// Value: Clear
+      static let clear = Rswift.StringResource(key: "clear", tableName: "Text", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Cloudy
+      static let clouds = Rswift.StringResource(key: "clouds", tableName: "Text", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Current
+      static let current = Rswift.StringResource(key: "current", tableName: "Text", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: DVT
       static let dvT = Rswift.StringResource(key: "DVT", tableName: "Text", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Ok
       static let ok = Rswift.StringResource(key: "ok", tableName: "Text", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Rainy
+      static let rain = Rswift.StringResource(key: "rain", tableName: "Text", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: max
+      static let max = Rswift.StringResource(key: "max", tableName: "Text", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: min
+      static let min = Rswift.StringResource(key: "min", tableName: "Text", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: Clear
+      static func clear(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("clear", tableName: "Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Text", preferredLanguages: preferredLanguages) else {
+          return "clear"
+        }
+
+        return NSLocalizedString("clear", tableName: "Text", bundle: bundle, comment: "")
+      }
+
+      /// Value: Cloudy
+      static func clouds(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("clouds", tableName: "Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Text", preferredLanguages: preferredLanguages) else {
+          return "clouds"
+        }
+
+        return NSLocalizedString("clouds", tableName: "Text", bundle: bundle, comment: "")
+      }
+
+      /// Value: Current
+      static func current(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("current", tableName: "Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Text", preferredLanguages: preferredLanguages) else {
+          return "current"
+        }
+
+        return NSLocalizedString("current", tableName: "Text", bundle: bundle, comment: "")
+      }
 
       /// Value: DVT
       static func dvT(preferredLanguages: [String]? = nil) -> String {
@@ -283,6 +334,45 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("ok", tableName: "Text", bundle: bundle, comment: "")
+      }
+
+      /// Value: Rainy
+      static func rain(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("rain", tableName: "Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Text", preferredLanguages: preferredLanguages) else {
+          return "rain"
+        }
+
+        return NSLocalizedString("rain", tableName: "Text", bundle: bundle, comment: "")
+      }
+
+      /// Value: max
+      static func max(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("max", tableName: "Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Text", preferredLanguages: preferredLanguages) else {
+          return "max"
+        }
+
+        return NSLocalizedString("max", tableName: "Text", bundle: bundle, comment: "")
+      }
+
+      /// Value: min
+      static func min(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("min", tableName: "Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Text", preferredLanguages: preferredLanguages) else {
+          return "min"
+        }
+
+        return NSLocalizedString("min", tableName: "Text", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}

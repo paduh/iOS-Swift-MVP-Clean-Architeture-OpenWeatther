@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - GenericTableViewDataSourceDelegate
 
-class GenericTableViewDataSourceDelegate<Model, Cell: UITableViewCell>: NSObject, UITabBarDelegate, UITableViewDataSource {
+class GenericTableViewDataSourceDelegate<Model, Cell: UITableViewCell>: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Properties
     
