@@ -99,10 +99,9 @@
 		C9B1D2E2266EEAFD00E64A18 /* DVT-Weather */ = {
 			isa = PBXGroup;
 			children = (
+				C9B1D319266EEB2F00E64A18 /* View */,
 				C9B1D2E3266EEAFD00E64A18 /* AppDelegate.swift */,
 				C9B1D2E5266EEAFD00E64A18 /* SceneDelegate.swift */,
-				C9B1D2E7266EEAFD00E64A18 /* ViewController.swift */,
-				C9B1D2E9266EEAFD00E64A18 /* Main.storyboard */,
 				C9B1D2EC266EEB0500E64A18 /* Assets.xcassets */,
 				C9B1D2EE266EEB0500E64A18 /* LaunchScreen.storyboard */,
 				C9B1D2F1266EEB0500E64A18 /* Info.plist */,
@@ -126,6 +125,23 @@
 				C9B1D307266EEB0500E64A18 /* Info.plist */,
 			);
 			path = "DVT-WeatherUITests";
+			sourceTree = "<group>";
+		};
+		C9B1D319266EEB2F00E64A18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C9B1D31A266EEB4700E64A18 /* Controller */,
+				C9B1D2E9266EEAFD00E64A18 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C9B1D31A266EEB4700E64A18 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C9B1D2E7266EEAFD00E64A18 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
