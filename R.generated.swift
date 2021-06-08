@@ -139,6 +139,39 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
+  /// This `R.image` struct is generated, and contains static references to 3 images.
+  struct image {
+    /// Image `clear`.
+    static let clear = Rswift.ImageResource(bundle: R.hostingBundle, name: "clear")
+    /// Image `partlysunny`.
+    static let partlysunny = Rswift.ImageResource(bundle: R.hostingBundle, name: "partlysunny")
+    /// Image `rain`.
+    static let rain = Rswift.ImageResource(bundle: R.hostingBundle, name: "rain")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "clear", bundle: ..., traitCollection: ...)`
+    static func clear(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.clear, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "partlysunny", bundle: ..., traitCollection: ...)`
+    static func partlysunny(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.partlysunny, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "rain", bundle: ..., traitCollection: ...)`
+    static func rain(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.rain, compatibleWith: traitCollection)
+    }
+    #endif
+
+    fileprivate init() {}
+  }
+
   /// This `R.info` struct is generated, and contains static references to 1 properties.
   struct info {
     struct uiApplicationSceneManifest {
